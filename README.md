@@ -1,6 +1,13 @@
 # Project 0
 
-**Description**
+## Getting Started
+
+1. Create a new repository on Github to host your project 0 code
+2. Clone this repository to your local machine with `git clone https://github.com/220118-UTA-JAVA-GCP-EM/project0-template.git`
+3. In the directory where you cloned this repository run this command `git remote set-url origin link-to-your-p0-repository-here`
+4. Run `git push -u origin main` this will push the files from this template repository to the repository that you created for p0
+
+## **Description**
 Leveraging Java 8, create an API with a multi-tier user system. You may choose the actual use case for your application as long as it meets all the requirements defined below. 
 
 Possible examples include:
@@ -9,13 +16,13 @@ Possible examples include:
 * Collectable card game tracker
 * Purchase ordering system
 
-**Requirements**
+## **Requirements**
 * Technologies:
   *	Java 8
     * Javalin (HTTP handling)
     * JDBC (Database Connectivity)
     * JUnit (Unit Testing)
-    * Logback (Logging)
+    * Log4j (Logging)
   * PostgreSQL
   * Postman (HTTP messaging)
   * Gradle (Dependency Management)
@@ -40,7 +47,6 @@ Possible examples include:
   * DAO design pattern.
   * User interactions will be simulated by HTTP messaging via Postman. 
 * Other:
-  * A SQL Script file that can be used to create a clone of your database structures. 
   * Stretch Goal: A slide show presentation introducing your application before demoing it. 
 
 **Example Bank Application Requirements**
