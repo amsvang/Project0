@@ -43,7 +43,7 @@ public class CustomerService {
         if (fromAcct == null || toAcct == null)
             return false;
 
-        if (fromAcct.getBalance() > input.getAmount()) {
+        if (fromAcct.getBalance() >= input.getAmount()) {
             Transaction transaction = new Transaction();
 
             transaction.setFromAccountId(fromAcct.getId());
@@ -63,7 +63,7 @@ public class CustomerService {
         //get toAccount number passed in
         Account toAcct = accountDao.getAccountByAccountNum(input.getToAccountNum());
 
-        if (toAcct == null || input.getAmount() == 0) {
+        if (toAcct == null || input.getAmount() <= 0) {
             return false;
         }
 

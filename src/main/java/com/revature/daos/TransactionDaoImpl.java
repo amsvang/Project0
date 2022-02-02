@@ -17,6 +17,7 @@ public class TransactionDaoImpl implements TransactionDao {
         try (Connection c = ConnectionUtil.getConnection();
              PreparedStatement ps = c.prepareStatement(sql);){
 
+            // debug null reference value
             ps.setFloat(1, transaction.getAmount());
             if (transaction.getFromAccountId() != 0)
                 ps.setInt(2, transaction.getFromAccountId());
