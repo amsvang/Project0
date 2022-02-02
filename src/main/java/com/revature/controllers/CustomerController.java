@@ -2,6 +2,7 @@ package com.revature.controllers;
 
 import com.revature.models.Customer;
 import com.revature.models.DepositInput;
+import com.revature.models.WithdrawInput;
 import com.revature.services.CustomerService;
 import com.revature.models.TransferInput;
 import io.javalin.http.Context;
@@ -70,6 +71,16 @@ public class CustomerController {
         DepositInput depositInput = ctx.bodyAsClass(DepositInput.class);
 
         boolean success = customerService.requestDeposit(depositInput);
+        if(success){
+            ctx.status(200);
+        } else {
+            ctx.status(400);
+        }
+    }
+    public void handleWithdraw(Context ctx) {
+        WithdrawInput withdrawInput = ctx.bodyAsClass(WithdrawInput.class);
+
+        boolean success = customerService.requestWithdraw(withdrawInput);
         if(success){
             ctx.status(200);
         } else {

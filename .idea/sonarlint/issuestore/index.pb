@@ -12,7 +12,5 @@ _
 /src/test/java/com/revature/BankApplication.java,e\1\e1db2884ae2b11c89b42774ccc87abc75d07b028
 9
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
-`
-0src/main/java/com/revature/util/LoggingUtil.java,0\6\0697ae1ac4a9546f9b082bc4fff8ee68abf28a85
 b
 2src/main/java/com/revature/models/AccountType.java,a\d\adabf6496bdc66a5650b676869928ee3f3ca8de2

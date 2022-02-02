@@ -1,7 +1,6 @@
 package com.revature.controllers;
 
 import com.revature.models.Transaction;
-import com.revature.models.Users;
 import com.revature.services.TransactionService;
 import io.javalin.http.Context;
 import java.util.List;

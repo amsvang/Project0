@@ -22,14 +22,23 @@ public class TransactionDaoImpl implements TransactionDao {
                 ps.setInt(2, transaction.getFromAccountId());
             else
                 ps.setNull(2, 4);
-            ps.setInt(3, transaction.getToAccountId());
+
+
+            if (transaction.getToAccountId() !=0)
+                ps.setInt(3, transaction.getToAccountId());
+            else
+                ps.setNull(3, 4);
+
+
             ps.setInt(4, transaction.getTransactionType().ordinal()+1);
             ps.setInt(5, transaction.getStatusType().ordinal()+1);
+
 
             if (transaction.getEmplId() != 0)
                 ps.setInt(6, transaction.getEmplId());
             else
                 ps.setNull(6, 4);
+
 
             int rowsAffected = ps.executeUpdate();
 

@@ -178,9 +178,9 @@ public class UserDaoImpl implements UserDao {
 
                 user.setId(rs.getInt("id"));
 
-                int typeOrdinal = rs.getInt("type");
+                int typeOrdinal = rs.getInt("type_id" );
                 UserType[] types = UserType.values();
-                user.setType(types[typeOrdinal]);
+                user.setType(types[typeOrdinal -1]);
 
                 user.setFirst(rs.getString("first"));
 

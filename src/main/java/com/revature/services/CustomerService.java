@@ -1,13 +1,8 @@
 package com.revature.services;
 
-import com.revature.daos.AccountDaoImpl;
-import com.revature.daos.CustomerDao;
-import com.revature.daos.CustomerDaoImpl;
+import com.revature.daos.*;
 import com.revature.models.*;
-import com.revature.daos.AccountDao;
-import com.revature.daos.TransactionDao;
-import com.revature.daos.TransactionDaoImpl;
-import com.revature.daos.UserDao;
+
 
 import java.util.List;
 
@@ -68,7 +63,7 @@ public class CustomerService {
         //get toAccount number passed in
         Account toAcct = accountDao.getAccountByAccountNum(input.getToAccountNum());
 
-        if (toAcct == null) {
+        if (toAcct == null || input.getAmount() == 0) {
             return false;
         }
 
@@ -83,5 +78,20 @@ public class CustomerService {
 
     }
 
+    public boolean requestWithdraw(WithdrawInput input) {
 
+        Account fromAcct = accountDao.getAccountByAccountNum(input.getFromAccountNum());
+
+        if (fromAcct == null || fromAcct.getBalance() <= 0) {
+            return false;
+        }
+        Transaction transaction = new Transaction();
+
+        transaction.setFromAccountId(fromAcct.getId());
+        transaction.setAmount(input.getAmount());
+        transaction.setTransactionType(TransactionType.WITHDRAW);
+        transaction.setStatusType(StatusType.PENDING);
+
+        return transactionDao.createTransaction(transaction);
+    }
 }

@@ -19,7 +19,15 @@ public class JavalinApp {
     private Javalin app = Javalin.create().routes(()->{
         path("manager-access",()->{
             before(authController::authorizeManageToken);
-            // All manager routes...
+            path("account",()->{
+                get(accountController::handleGetAllAccounts);
+                post(accountController::handleCreate);
+                delete(accountController::handleDelete);
+                path("{id}",()->{
+                    get(accountController::handleGetOne);
+                    put(accountController::handleUpdate);
+                });
+            });
         });
         path("employee-access",()->{
             before(authController::authorizeEmployeeToken);
@@ -61,12 +69,12 @@ public class JavalinApp {
             });
             path("account",()->{
                 get(accountController::handleGetAllAccounts);
-                post(accountController::handleCreate);
+                /*post(accountController::handleCreate);
                 delete(accountController::handleDelete);
                 path("{id}",()->{
                     get(accountController::handleGetOne);
                     put(accountController::handleUpdate);
-                });
+                });*/
             });
         });
         path("customer",()->{
@@ -77,6 +85,19 @@ public class JavalinApp {
             path("deposit", ()->{
                 post(customerController::handleDeposit);
             });
+            path("withdraw", ()->{
+               post(customerController::handleWithdraw);
+            });
+            path("{id}",()->{
+                get(customerController::handleGetOne);
+                put(customerController::handleUpdate);
+            });
+            /*path("address",()->{
+                path("{id}",()->{
+                    get(customerController::handleGetOne);
+                    put(customerController::handleUpdate);
+                });
+            });*/
         });
         path("login", ()->{
             post(authController::authenticateLogin);
